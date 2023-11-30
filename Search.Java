@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 public class Search {
 
 public static void main(String[] args) {
+    if (args.length != 2) {
+        System.out.println("ERROR: Expecting 2 arguments, first path, second word");
+    }
     search(args[0], args[1]);
 }
 
@@ -18,10 +21,12 @@ private static void search(String path, String word) {
             for (String curWord : words) {
                 if (curWord.equals(word)) {
                     System.out.println(line);
+                    break;
                 }
             }
         }
     } catch (FileNotFoundException notFound) {
+        System.out.println("ERROR: path not found");
         notFound.printStackTrace();
     }
     }
